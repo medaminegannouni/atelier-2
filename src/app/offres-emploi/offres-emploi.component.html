@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row">
+        <input name="search" [(ngModel)]="searchtext">
+        <button  type="button" class="btn btn-success" (click)="serach()">search</button>
+        <div class="col-md-4 col-sm-6 col-xs-12" *ngFor="let p of Emplois">
+            <div class="card" style="width: 18rem;">
+                
+                <div class="card-body">
+                  <h5 class="card-title">{{p.reference}}</h5>
+                  <p class="card-text">titre :{{p.titre}}</p>
+                  <p class="card-text">entreprise:{{p.entreprise}}</p>
+                  <p class="card-text">etat :{{p.etat}}</p>
+                  <button type="button" class="btn btn-success"[disabled]="p.etat == false">postuler</button> 
+                   
+                </div>
+              </div>
+        </div>
+    </div>
+    <button type="button" class="btn btn-success"(click)="bilan()">Bilan</button> 
+    {{nbr}}
+                   
+</div>

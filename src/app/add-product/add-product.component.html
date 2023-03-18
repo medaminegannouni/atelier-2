@@ -1,0 +1,33 @@
+<form #form="ngForm" (ngSubmit)="ajouter()" >
+    Title : <input class="form-control" type="text" name="title"[(ngModel)]="Produit.title"  #title="ngModel" required minlength="3" >
+    <div class="alert alert-danger" *ngIf="title.touched && title.invalid">
+    <div *ngIf="title.errors?.['required']">Title is required</div>
+    <div  *ngIf="title.errors?.['minlength']">title must have at least 3 characters </div>
+</div>
+    Price : <input  class="form-control" type="number" name="price" [(ngModel)]="Produit.price"  #price="ngModel" required min="1">
+    <div  class="alert alert-danger" *ngIf="price.touched && price.invalid">
+    <div *ngIf="price.errors?.['required']">Price is required</div>
+    <div *ngIf="price.errors?.['min']" >Price must a positive number  </div>
+    </div>
+    Quantity : <input class="form-control" type="number" name="Quantity" [(ngModel)]="Produit.quantity" #quantity="ngModel"  required min="1">
+    <div  class="alert alert-danger" *ngIf="quantity.touched && quantity.invalid">
+    <div  *ngIf="quantity.errors?.['required']">quantity is required</div>
+    <div *ngIf="quantity.errors?.['min']">quantity must be a number </div>
+    </div>
+    Picture : <input class="form-control" type="text" name="picture" [(ngModel)]="Produit.picture" #picture="ngModel" required> 
+    <div  class="alert alert-danger" *ngIf="picture.touched && picture.invalid">
+    <div *ngIf="picture.errors?.['required']">Picture is required</div>
+    </div>
+    Email : <input class="form-control" type="text" name="email" [(ngModel)]="email" #emaill="ngModel"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"> 
+ 
+    <div  class="alert alert-danger" *ngIf="emaill.touched && emaill.invalid">
+        <div *ngIf="emaill.errors?.['pattern']">email is required</div>
+    </div>
+    
+    <input  class="btn btn-primary" type="submit" value="Save" [disabled]="form.invalid">
+
+</form>
+{{Produit.title}}
+{{Produit.price}}
+{{Produit.quantity}}
+{{Produit.picture}}
